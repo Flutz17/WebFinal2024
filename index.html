@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Météo</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="search-container">
+      <input type="text" id="cityInput" placeholder="Ajouter une ville">
+      <button id="addCityButton">+</button>
+    </div>
+    <div id="cityList" class="city-list"></div>
+    <div id="weatherInfo" class="weather-info">
+      <p id="message"></p>
+      <h1 id="locationName"></h1>
+      <h2 id="regionCountry"></h2>
+      <p id="lastUpdate"></p>
+      <div id="tempContainer">
+        <img id="conditionIcon" alt="Condition">
+        <span id="temperature"></span>
+      </div>
+      <div id="forecast">
+        <h3 id="forecastDate"></h3>
+        <p id="maxTemp"></p>
+        <p id="minTemp"></p>
+        <p id="windSpeed"></p>
+        <p id="precipitation"></p>
+        <p id="snow"></p>
+      </div>
+    </div>
+  </div>
+  <script src="/js/meteo.js"></script>
+</body>
+</html>
