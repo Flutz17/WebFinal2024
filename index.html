@@ -12,7 +12,13 @@
       <input type="text" id="cityInput" placeholder="Ajouter une ville">
       <button id="addCityButton">+</button>
     </div>
-    <div id="cityList" class="city-list"></div>
+    
+    <!-- Section Mes Villes -->
+    <div class="city-list-container">
+      <button class="city-list-toggle" id="toggleCityList">Mes villes</button>
+      <ul id="cityList" class="city-list"></ul>
+    </div>
+  
     <div id="weatherInfo" class="weather-info">
       <p id="message"></p>
       <h1 id="locationName"></h1>
@@ -32,6 +38,8 @@
       </div>
     </div>
   </div>
+  
+
   <script src="/js/meteo.js"></script>
 </body>
 </html>
