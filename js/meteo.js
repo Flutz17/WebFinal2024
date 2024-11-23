@@ -24,28 +24,53 @@ const body = document.getElementById("body");
 
 let cachedCities = []; // Stocke les villes ajoutées
 
-// Initialise les villes à partir du cache local
 document.addEventListener("DOMContentLoaded", () => {
   const storedCities = JSON.parse(localStorage.getItem("cachedCities")) || [];
-  cachedCities.push(...storedCities);
+  
+  if (storedCities.length === 0) {
+    // Si aucune ville n'est stockée, ajouter Chicoutimi par défaut
+    const defaultCity = "Chicoutimi";
+    cachedCities.push(defaultCity);
+    localStorage.setItem("cachedCities", JSON.stringify(cachedCities));
+    fetchWeather(defaultCity); // Charge les données météo pour Chicoutimi
+  } else {
+    // Sinon, affiche la première ville du cache
+    cachedCities.push(...storedCities);
+    fetchWeather(storedCities[0]);
+  }
+
   renderCityList();
 });
 
-// Ajoute une ville à la liste
-addCityButton.addEventListener("click", () => {
-  const cityName = cityInput.value.trim();
-  if (cityName) {
-    if (!cachedCities.includes(cityName)) {
-      cachedCities.push(cityName);
-      localStorage.setItem("cachedCities", JSON.stringify(cachedCities));
-      renderCityList();
-      fetchWeather(cityName); // Affiche directement les données météo de la nouvelle ville
-    } else {
-      message.textContent = "La ville est déjà dans votre liste.";
-    }
+
+addCityButton.addEventListener("click", async () => {
+  const cityNameInput = cityInput.value.trim();
+
+  if (!cityNameInput) return; // Empêche l'ajout si le champ est vide
+
+  try {
+      // Récupérer les données météo pour valider la ville
+      const response = await fetch(`${API_URL}?key=${API_KEY}&q=${cityNameInput}&aqi=no`);
+      if (!response.ok) throw new Error("Ville introuvable");
+
+      const data = await response.json();
+      const cityName = data.location.name; // Récupérer le nom exact de la ville
+
+      if (!cachedCities.includes(cityName)) {
+          cachedCities.push(cityName);
+          localStorage.setItem("cachedCities", JSON.stringify(cachedCities));
+          renderCityList(); // Rafraîchir la liste des villes
+      }
+
+      fetchWeather(cityName); // Affiche la météo de la ville
+  } catch (error) {
+      message.textContent = "Erreur : " + error.message;
   }
-  cityInput.value = ""; // Réinitialise le champ d'entrée
+
+  cityInput.value = ""; // Réinitialiser le champ d'entrée
 });
+
+
 
 // Affiche les villes stockées dans le cache
 function renderCityList() {
@@ -233,3 +258,8 @@ toggleCityListButton.addEventListener("click", () => {
   }
 });
 
+function formatCityName(city) {
+  if (!city) return ""; // Gérer les cas où la ville est vide ou undefined
+  city = city.trim();   // Supprimer les espaces superflus
+  return city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
+}

@@ -5,17 +5,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vh; /* Ajuste à 100% de la hauteur de la fenêtre */
+  width: 100vw;  /* Ajuste à 100% de la largeur de la fenêtre */
+  overflow: hidden; /* Empêche les débordements */
   background-color: #f0f0f0;
 }
 
+
 #app {
-  width: 90%;
+  width: 90%; /* Ajuste selon l'espace disponible */
   max-width: 800px;
+  max-height: 100%; /* Empêche de dépasser l'écran */
   background: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Active le défilement vertical si nécessaire */
 }
 
 .search-container {
@@ -46,6 +51,8 @@ body {
 
 .city-list-container {
   margin-bottom: 20px;
+  max-height: 30%; /* Limite la hauteur de la liste */
+  overflow-y: auto; /* Ajoute un défilement vertical si nécessaire */
 }
 
 .city-list-toggle {
@@ -123,12 +130,20 @@ body {
 }
 
 #nextHours {
-  display:grid;
-  column-gap: 5px;
-  grid-template-columns: 155px 155px 155px 155px 155px;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  width: 100%; /* S'adapte à la largeur disponible */
 }
 
-#nextHours div{
+#nextHours div {
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 50px;
+  text-align: center;
+  padding: 10px;
+}
+
+#conditionIcon, #nextHours img {
+  max-width: 100%;
+  height: auto;
 }
