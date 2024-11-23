@@ -121,3 +121,14 @@ body {
   margin-top: 20px;
   text-align: left;
 }
+
+#nextHours {
+  display:grid;
+  column-gap: 5px;
+  grid-template-columns: 155px 155px 155px 155px 155px;
+}
+
+#nextHours div{
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 50px;
+}

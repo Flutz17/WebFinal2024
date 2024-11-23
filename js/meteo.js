@@ -19,6 +19,9 @@ const precipitation = document.getElementById("precipitation");
 const snow = document.getElementById("snow");
 const toggleCityListButton = document.getElementById("toggleCityList");
 
+//Va chercher le body pour mettre une image d'arrière plan
+const body = document.getElementById("body");
+
 let cachedCities = []; // Stocke les villes ajoutées
 
 // Initialise les villes à partir du cache local
@@ -85,6 +88,7 @@ async function fetchWeather(city) {
       throw new Error("Ville introuvable");
     }
     const data = await response.json();
+    console.log(data);
     displayWeather(data);
     message.textContent = "";
   } catch (error) {
@@ -107,6 +111,114 @@ function displayWeather(data) {
   windSpeed.textContent = `Vent max : ${data.forecast.forecastday[0].day.maxwind_kph} kph`;
   precipitation.textContent = `Précipitations : ${data.forecast.forecastday[0].day.totalprecip_mm} mm`;
   snow.textContent = `Neige : ${data.forecast.forecastday[0].day.totalsnow_cm} cm`;
+
+  changeBackground(data.current.condition.code);
+  changeFiveDays(data);
+}
+
+function changeBackground(weatherCode) {
+  switch(weatherCode){
+    case 1000:
+      {
+        body.style.backgroundImage = "url('img/Sunny.jpg')";
+        break;
+      }
+    case 1003:
+    case 1006:
+    case 1009:
+    case 1135:
+      {
+        body.style.backgroundImage = "url('img/Cloudy.jpg')";
+        break;
+      }
+    case 1030:
+    case 1063:
+    case 1150:
+    case 1153:
+    case 1180:
+    case 1183:
+    case 1186:
+    case 1189:
+    case 1192:
+    case 1195:
+    case 1240:
+    case 1243:
+    case 1246:
+      {
+        body.style.backgroundImage = "url('img/Rainy.jpg')";
+        break;
+      }
+    case 1066:
+    case 1069:
+    case 1072:
+    case 1114:
+    case 1117:
+    case 1147:
+    case 1168:
+    case 1171:
+    case 1198:
+    case 1201:
+    case 1204:
+    case 1207:
+    case 1210:
+    case 1213:
+    case 1216:
+    case 1219:
+    case 1222:
+    case 1225:
+    case 1237:
+    case 1249:
+    case 1252:
+    case 1255:
+    case 1261:
+    case 1264:
+      {
+        body.style.backgroundImage = "url('img/Snowy.jpg')";
+        break;
+      }
+    case 1087:
+    case 1273:
+    case 1276:
+    case 1279:
+    case 1282:
+      {
+        body.style.backgroundImage = "url('img/Stormy.jpg')";
+        break;
+      }
+    default:
+      {
+        body.style.backgroundImage = "url('img/Sunny.jpg')";
+        break;
+      }
+  }
+}
+
+function changeFiveDays(data)
+{
+  //Hour 1
+  document.getElementById("hour1text").textContent = "00h";
+  document.getElementById("h1Icon").src = `https:${data.forecast.forecastday[0].hour[0].condition.icon}`;
+  document.getElementById("h1Temp").textContent = data.forecast.forecastday[0].hour[0].temp_c + " C";
+
+  //Hour 2
+  document.getElementById("hour2text").textContent = "07h";
+  document.getElementById("h2Icon").src = `https:${data.forecast.forecastday[0].hour[7].condition.icon}`;
+  document.getElementById("h2Temp").textContent = data.forecast.forecastday[0].hour[7].temp_c + " C";
+
+  //Hour 3
+  document.getElementById("hour3text").textContent = "12h";
+  document.getElementById("h3Icon").src = `https:${data.forecast.forecastday[0].hour[12].condition.icon}`;
+  document.getElementById("h3Temp").textContent = data.forecast.forecastday[0].hour[12].temp_c + " C";
+
+  //Hour 4
+  document.getElementById("hour4text").textContent = "16h";
+  document.getElementById("h4Icon").src = `https:${data.forecast.forecastday[0].hour[16].condition.icon}`;
+  document.getElementById("h4Temp").textContent = data.forecast.forecastday[0].hour[16].temp_c + " C";
+
+  //Hour 5
+  document.getElementById("hour5text").textContent = "21h";
+  document.getElementById("h5Icon").src = `https:${data.forecast.forecastday[0].hour[21].condition.icon}`;
+  document.getElementById("h5Temp").textContent = data.forecast.forecastday[0].hour[21].temp_c + " C";
 }
 
 // Gère l'affichage de la liste déroulante

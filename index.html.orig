@@ -6,7 +6,7 @@
   <title>App Météo</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body id="body">
+<body>
   <div id="app">
     <div class="search-container">
       <input type="text" id="cityInput" placeholder="Ajouter une ville">
@@ -28,34 +28,6 @@
         <img id="conditionIcon" alt="Condition">
         <span id="temperature"></span>
       </div>
-      <h2>Prévisions de la journée</h2>
-      <div id="nextHours">
-        <div id="hour1">
-          <h5 id="hour1text"></h5>
-          <img id="h1Icon" alt="ConditionIcon">
-          <p id="h1Temp"></p>
-        </div>
-        <div id="hour2">
-          <h5 id="hour2text"></h5>
-          <img id="h2Icon" alt="ConditionIcon">
-          <p id="h2Temp"></p>
-        </div>
-        <div id="hour3">
-          <h5 id="hour3text"></h5>
-          <img id="h3Icon" alt="ConditionIcon">
-          <p id="h3Temp"></p>
-        </div>
-        <div id="hour4">
-          <h5 id="hour4text"></h5>
-          <img id="h4Icon" alt="ConditionIcon">
-          <p id="h4Temp"></p>
-        </div>
-        <div id="hour5">
-          <h5 id="hour5text"></h5>
-          <img id="h5Icon" alt="ConditionIcon">
-          <p id="h5Temp"></p>
-        </div>
-      </div>
       <div id="forecast">
         <h3 id="forecastDate"></h3>
         <p id="maxTemp"></p>
@@ -66,8 +38,12 @@
       </div>
     </div>
   </div>
+<<<<<<< HEAD
+  <script src="js/meteo.js"></script>
+=======
   
 
-  <script src="js/meteo.js"></script>
+  <script src="/js/meteo.js"></script>
+>>>>>>> 411750d70e0ebd932478125017917dfd773cce32
 </body>
 </html>
