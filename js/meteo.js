@@ -137,6 +137,9 @@ function displayWeather(data) {
   precipitation.textContent = `Précipitations : ${data.forecast.forecastday[0].day.totalprecip_mm} mm`;
   snow.textContent = `Neige : ${data.forecast.forecastday[0].day.totalsnow_cm} cm`;
 
+  document.getElementById("lever").textContent = data.forecast.forecastday[0].astro.sunrise;
+  document.getElementById("coucher").textContent = data.forecast.forecastday[0].astro.sunset;
+
   changeBackground(data.current.condition.code);
   changeFiveDays(data);
 }

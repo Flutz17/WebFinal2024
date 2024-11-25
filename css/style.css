@@ -11,6 +11,9 @@ body {
   background-color: #f0f0f0;
 }
 
+#message {
+  color: red;
+}
 
 #app {
   width: 90%; /* Ajuste selon l'espace disponible */
@@ -33,6 +36,31 @@ body {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+#letitsnow {
+  background-image: linear-gradient(to right, green, white, red);
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s;
+  margin-bottom: 15px;
+}
+#letitsnow:hover {
+  background-image: linear-gradient(to right, rgb(0, 70, 0), rgb(168, 168, 168), rgb(80, 0, 0));
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s;
+  margin-bottom: 15px;
 }
 
 #addCityButton {
@@ -141,6 +169,12 @@ body {
   border-radius: 50px;
   text-align: center;
   padding: 10px;
+}
+#nextHours div:hover {
+  background-color: rgb(133, 133, 133);
+  z-index:5;
+  box-shadow: 5px 5px 5px rgb(0, 0, 0);
+  transform: scale(1.1);
 }
 
 #conditionIcon, #nextHours img {
