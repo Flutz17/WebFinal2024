@@ -11,7 +11,6 @@ const regionCountry = document.getElementById("regionCountry");
 const lastUpdate = document.getElementById("lastUpdate");
 const conditionIcon = document.getElementById("conditionIcon");
 const temperature = document.getElementById("temperature");
-const forecastDate = document.getElementById("forecastDate");
 const maxTemp = document.getElementById("maxTemp");
 const minTemp = document.getElementById("minTemp");
 const windSpeed = document.getElementById("windSpeed");
@@ -108,7 +107,7 @@ function removeCity(city) {
 async function fetchWeather(city) {
   try {
     message.textContent = "Chargement...";
-    const response = await fetch(`${API_URL}?key=${API_KEY}&q=${city}&aqi=no`);
+    const response = await fetch(`${API_URL}?key=${API_KEY}&q=${city}&aqi=no&days=5`);
     if (!response.ok) {
       throw new Error("Ville introuvable");
     }
@@ -130,12 +129,11 @@ function displayWeather(data) {
   conditionIcon.src = `https:${data.current.condition.icon}`;
   temperature.textContent = `${data.current.temp_c}°C`;
 
-  forecastDate.textContent = `Prévisions : ${data.forecast.forecastday[0].date}`;
-  maxTemp.textContent = `Max : ${data.forecast.forecastday[0].day.maxtemp_c}°C`;
-  minTemp.textContent = `Min : ${data.forecast.forecastday[0].day.mintemp_c}°C`;
-  windSpeed.textContent = `Vent max : ${data.forecast.forecastday[0].day.maxwind_kph} kph`;
-  precipitation.textContent = `Précipitations : ${data.forecast.forecastday[0].day.totalprecip_mm} mm`;
-  snow.textContent = `Neige : ${data.forecast.forecastday[0].day.totalsnow_cm} cm`;
+  maxTemp.textContent = `${data.forecast.forecastday[0].day.maxtemp_c}°C`;
+  minTemp.textContent = `${data.forecast.forecastday[0].day.mintemp_c}°C`;
+  windSpeed.textContent = `${data.forecast.forecastday[0].day.maxwind_kph} kph`;
+  precipitation.textContent = `${data.forecast.forecastday[0].day.totalprecip_mm} mm`;
+  snow.textContent = `${data.forecast.forecastday[0].day.totalsnow_cm} cm`;
 
   document.getElementById("lever").textContent = data.forecast.forecastday[0].astro.sunrise;
   document.getElementById("coucher").textContent = data.forecast.forecastday[0].astro.sunset;
@@ -247,6 +245,13 @@ function changeFiveDays(data)
   document.getElementById("hour5text").textContent = "21h";
   document.getElementById("h5Icon").src = `https:${data.forecast.forecastday[0].hour[21].condition.icon}`;
   document.getElementById("h5Temp").textContent = data.forecast.forecastday[0].hour[21].temp_c + " C";
+
+  //Day 1
+  document.getElementById("d1Date").textContent = `${data.forecast.forecastday[1].date}`;
+  document.getElementById("d1Icon").src = `https:${data.forecast.forecastday[1].hour[12].condition.icon}`;
+  //Day 2
+  document.getElementById("d2Date").textContent = `${data.forecast.forecastday[2].date}`;
+  document.getElementById("d2Icon").src = `https:${data.forecast.forecastday[2].hour[12].condition.icon}`;
 }
 
 // Gère l'affichage de la liste déroulante

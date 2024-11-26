@@ -1,14 +1,16 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Bahnschrift, sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   height: 100vh; /* Ajuste à 100% de la hauteur de la fenêtre */
   width: 100vw;  /* Ajuste à 100% de la largeur de la fenêtre */
   overflow: hidden; /* Empêche les débordements */
   background-color: #f0f0f0;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 #message {
@@ -17,13 +19,47 @@ body {
 
 #app {
   width: 90%; /* Ajuste selon l'espace disponible */
-  max-width: 800px;
-  max-height: 100%; /* Empêche de dépasser l'écran */
+  max-width: 55%;
+  margin-left: 2%;
+  max-height: 90%; /* Empêche de dépasser l'écran */
   background: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow-y: auto; /* Active le défilement vertical si nécessaire */
+  opacity: 90%;
+}
+
+#infosSupp {
+  width: 90%; /* Ajuste selon l'espace disponible */
+  max-width: 30%;
+  max-height: 50%; /* Empêche de dépasser l'écran */
+  margin-right: 2%;
+  background: white;
+  padding: 20px;
+  border-radius: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Active le défilement vertical si nécessaire */
+  opacity: 90%;
+  text-align: center;
+}
+
+#prochainsJours {
+  width: 90%; /* Ajuste selon l'espace disponible */
+  max-width: 30%;
+  max-height: 50%; /* Empêche de dépasser l'écran */
+  margin-right: 2%;
+  background: white;
+  padding: 20px;
+  border-radius: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Active le défilement vertical si nécessaire */
+  opacity: 90%;
+  text-align: center;
+}
+
+h2 {
+  color: #007BFF;
 }
 
 .search-container {
@@ -35,30 +71,27 @@ body {
   flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 #letitsnow {
-  background-image: linear-gradient(to right, green, white, red);
+  background-image: linear-gradient(to right, #70E690, white, #E67074);
   color: black;
+  font-size: 18px;
+  font-family: Bahnschrift, serif;
+  font-weight: bold;
   border: none;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 60px;
   cursor: pointer;
-  width: 100%;
+  width: 15%;
+  height: 40px;
   text-align: center;
   transition: background-color 0.3s;
   margin-bottom: 15px;
 }
 #letitsnow:hover {
-  background-image: linear-gradient(to right, rgb(0, 70, 0), rgb(168, 168, 168), rgb(80, 0, 0));
-  color: black;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
+  background-image: linear-gradient(to right, limegreen, white, red);
   transition: background-color 0.3s;
   margin-bottom: 15px;
 }
@@ -68,7 +101,7 @@ body {
   color: white;
   border: none;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -85,14 +118,17 @@ body {
 
 .city-list-toggle {
   background-color: #007BFF;
+  font-family: Bahnschrift, serif;
   color: white;
   border: none;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
-  width: 100%;
+  width: 60%;
   text-align: center;
   transition: background-color 0.3s;
+  position: relative;
+  left: 20%;
 }
 
 .city-list-toggle:hover {
@@ -144,40 +180,80 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
+}
+
+#temperature {
+  font-size: 48px;
+  font-weight: bold;
 }
 
 #conditionIcon {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
+  width: auto;
+  height: 100px;
+  margin-right: 2px;
+}
+
+#lastUpdate {
+  font-style: italic;
+  color: darkgray;
 }
 
 #forecast {
   margin-top: 20px;
-  text-align: left;
+  text-align: center;
 }
 
 #nextHours {
   display: grid;
-  gap: 5px;
+  gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   width: 100%; /* S'adapte à la largeur disponible */
 }
 
 #nextHours div {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(40, 123, 255, 0.85);
   border-radius: 50px;
   text-align: center;
   padding: 10px;
+  max-width: 70%;
 }
+
 #nextHours div:hover {
-  background-color: rgb(133, 133, 133);
+  background-color: rgba(40, 123, 255);
   z-index:5;
-  box-shadow: 5px 5px 5px rgb(0, 0, 0);
+  box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.6);
   transform: scale(1.1);
+}
+
+#prochainsJours {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  width: 100%; /* S'adapte à la largeur disponible */
+}
+
+#prochainsJours div {
+  background-color: rgba(40, 123, 255, 0.85);
+  border-radius: 50px;
+  text-align: center;
+  padding: 5px;
+  max-width: 80%;
+}
+
+#prochainsJours h2 {
+  margin-right: 5px;
 }
 
 #conditionIcon, #nextHours img {
   max-width: 100%;
   height: auto;
+}
+
+.icon {
+  max-height: 20px;
+  width: auto;
+}
+
+#forecast div {
+  padding-bottom: 20px;
 }
