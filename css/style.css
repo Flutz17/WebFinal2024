@@ -5,9 +5,9 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  height: 100vh; /* Ajuste à 100% de la hauteur de la fenêtre */
-  width: 100vw;  /* Ajuste à 100% de la largeur de la fenêtre */
-  overflow: hidden; /* Empêche les débordements */
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
   background-color: #f0f0f0;
   flex-wrap: wrap;
   flex-direction: column;
@@ -18,15 +18,15 @@ body {
 }
 
 #app {
-  width: 90%; /* Ajuste selon l'espace disponible */
+  width: 90%;
   max-width: 55%;
   margin-left: 2%;
-  max-height: 90%; /* Empêche de dépasser l'écran */
+  max-height: 90%;
   background: white;
   padding: 20px;
   border-radius: 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow-y:auto; /* Active le défilement vertical si nécessaire */
+  overflow-y:auto;
   opacity: 90%;
   scrollbar-width: none;
 }
@@ -52,29 +52,29 @@ body {
 }
 
 #infosSupp {
-  width: 90%; /* Ajuste selon l'espace disponible */
+  width: 90%;
   max-width: 30%;
-  max-height: 50%; /* Empêche de dépasser l'écran */
+  max-height: 50%;
   margin-right: 2%;
   background: white;
   padding: 20px;
   border-radius: 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow-y: auto; /* Active le défilement vertical si nécessaire */
+  overflow-y: auto;
   opacity: 90%;
   text-align: center;
 }
 
 #prochainsJours {
-  width: 90%; /* Ajuste selon l'espace disponible */
+  width: 90%;
   max-width: 30%;
-  max-height: 50%; /* Empêche de dépasser l'écran */
+  max-height: 50%;
   margin-right: 2%;
   background: white;
   padding: 20px;
   border-radius: 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow-y: auto; /* Active le défilement vertical si nécessaire */
+  overflow-y: auto;
   opacity: 90%;
   text-align: center;
 }
@@ -133,8 +133,8 @@ h2 {
 
 .city-list-container {
   margin-bottom: 20px;
-  max-height: 30%; /* Limite la hauteur de la liste */
-  overflow-y: auto; /* Ajoute un défilement vertical si nécessaire */
+  max-height: 30%;
+  overflow-y: auto;
 }
 
 .city-list-toggle {
@@ -229,7 +229,7 @@ h2 {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  width: 100%; /* S'adapte à la largeur disponible */
+  width: 100%;
 }
 
 #nextHours div {
@@ -250,7 +250,7 @@ h2 {
 #prochainsJours {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  width: 100%; /* S'adapte à la largeur disponible */
+  width: 100%;
 }
 
 #prochainsJours div {
