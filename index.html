@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>App Météo</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body id="body">
   <div id="app">
@@ -61,6 +62,8 @@
         </div>
       </div>
     </div>
+
+    <div id="map"></div>
   </div>
 
   <div id="infosSupp">
@@ -85,8 +88,8 @@
       <p id="d2Date"></p>
     </div>
   </div>
-  
 
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="js/meteo.js"></script>
   <script src="js/snow.js"></script>
 </body>

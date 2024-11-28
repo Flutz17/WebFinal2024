@@ -138,6 +138,27 @@ function displayWeather(data) {
   document.getElementById("lever").textContent = data.forecast.forecastday[0].astro.sunrise;
   document.getElementById("coucher").textContent = data.forecast.forecastday[0].astro.sunset;
 
+  console.log(data);
+
+  const map = L.map('map').setView([data.location.lat, data.location.lon], 15);
+
+  // Ajouter un fond de carte (OpenStreetMap)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Ajouter un marqueur avec la météo
+  L.marker([data.location.lat, data.location.lon])
+  .addTo(map)
+  .bindPopup(`
+    <div class="weather-popup">
+      <h3>${data.location.name}</h3>
+      <p><img src="https:${data.current.condition.icon}"></p>
+      <p><strong>Température :</strong> ${data.current.temp_c}°C</p>
+    </div>
+  `)
+  .openPopup();
+
   changeBackground(data.current.condition.code);
   changeFiveDays(data);
 }
