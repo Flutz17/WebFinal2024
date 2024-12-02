@@ -22,6 +22,7 @@ const toggleCityListButton = document.getElementById("toggleCityList");
 const body = document.getElementById("body");
 
 let cachedCities = []; // Stocke les villes ajoutées
+let map = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   const storedCities = JSON.parse(localStorage.getItem("cachedCities")) || [];
@@ -138,9 +139,14 @@ function displayWeather(data) {
   document.getElementById("lever").textContent = data.forecast.forecastday[0].astro.sunrise;
   document.getElementById("coucher").textContent = data.forecast.forecastday[0].astro.sunset;
 
-  console.log(data);
+  if (map) {
+    map.remove(); // Supprime la carte existante si elle est déjà initialisée pour régler le problème de la présentation
+  }
 
-  const map = L.map('map').setView([data.location.lat, data.location.lon], 15);
+  const mapContainer = document.getElementById("map");
+  mapContainer.innerHTML = "";
+
+  map = L.map('map').setView([data.location.lat, data.location.lon], 15);
 
   // Ajouter un fond de carte (OpenStreetMap)
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
